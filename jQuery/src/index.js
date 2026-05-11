@@ -1,3 +1,5 @@
+import { salesData } from "./data.js";
+
 $(() => {
   const dataSource = new DevExpress.data.PivotGridDataSource({
     store: salesData,

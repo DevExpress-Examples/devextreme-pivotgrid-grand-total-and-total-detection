@@ -1,4 +1,4 @@
-const salesData = [
+export const salesData = [
   {
     id: 1,
     region: "North",
