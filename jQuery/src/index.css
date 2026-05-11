@@ -2,3 +2,69 @@
     margin: 50px;
     width: 90vw;
 }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-title {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.pill {
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.long-title h3 {
+  font-family:
+    "Segoe UI Light", "Helvetica Neue Light", "Segoe UI", "Helvetica Neue",
+    "Trebuchet MS", Verdana;
+  font-weight: 200;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Grand Total row */
+.cell-grand-row {
+  background: #cce0f5 !important;
+  color: #1a3a5c !important;
+  font-weight: 700 !important;
+}
+
+/* Grand Total column */
+.cell-grand-col {
+  background: #ddeaf9 !important;
+  color: #1a3a5c !important;
+  font-weight: 700 !important;
+}
+
+/* Grand Total row ∩ column */
+.cell-both {
+  background: #b8d4f0 !important;
+  color: #0d2440 !important;
+  font-weight: 700 !important;
+}
+
+/* Total row */
+.cell-total-row {
+  background: #fde8cc !important;
+  color: #7a4000 !important;
+  font-weight: 600 !important;
+}
+
+/* Total column */
+.cell-total-col {
+  background: #fbd4a8 !important;
+  color: #7a4000 !important;
+  font-weight: 600 !important;
+}
