@@ -1,29 +1,126 @@
 @using ASP_NET_Core.Models
 
-<h2>Home</h2>
+<div class="long-title">
+    <h3>Grand Totals and Totals Detection using <code>calculateSummaryValue</code></h3>
+</div>
 
-@(Html.DevExtreme().DataGrid<SampleOrder>()
+@(Html.DevExtreme().PivotGrid<SampleSale>()
+    .ID("pivotgrid")
     .ShowBorders(true)
-    .DataSource(d => d.Mvc().Controller("SampleData").LoadAction("Get").Key("OrderID"))
-    .Columns(columns => {
-        columns.AddFor(m => m.OrderID);
-        columns.AddFor(m => m.OrderDate);
-        columns.AddFor(m => m.CustomerName);
-        columns.AddFor(m => m.ShipCountry);
-        columns.AddFor(m => m.ShipCity);
-    })
-    .Paging(p => p.PageSize(10))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .GroupPanel(p => p.Visible(true))
-    .Grouping(g => g.AutoExpandAll(false))
-    .RemoteOperations(true)
-    .Summary(s => s
-        .TotalItems(totalItems => {
-            totalItems.AddFor(m => m.ShipCity).SummaryType(SummaryType.Count);
-        })
-        .GroupItems(groupItems => {
-            groupItems.Add().SummaryType(SummaryType.Count);
+    .ShowColumnTotals(true)
+    .ShowRowTotals(true)
+    .ShowColumnGrandTotals(true)
+    .ShowRowGrandTotals(true)
+    .AllowExpandAll(true)
+    .DataSource(d => d
+        .Store(s => s
+            .Array()
+            .Data(SampleData.Sales)
+            .Key("Id")
+        )
+        .Fields(fields => {
+            fields.Add()
+                .DataField("Region")
+                .Area(PivotGridArea.Row)
+                .Caption("Region")
+                .Expanded(true);
+            fields.Add()
+                .DataField("Category")
+                .Area(PivotGridArea.Row)
+                .Caption("Category");
+            fields.Add()
+                .DataField("Year")
+                .Area(PivotGridArea.Column)
+                .Caption("Year")
+                .DataType(PivotGridDataType.Number)
+                .Expanded(true);
+            fields.Add()
+                .DataField("Quarter")
+                .Area(PivotGridArea.Column)
+                .Caption("Quarter")
+                .Expanded(true);
+            fields.Add()
+                .DataField("Sales")
+                .Area(PivotGridArea.Data)
+                .Caption("Sales ($)")
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .CalculateSummaryValue("calculateRowTotalsSummaryValue");
+            fields.Add()
+                .DataField("Sales")
+                .Area(PivotGridArea.Data)
+                .Caption("Sales Average")
+                .SummaryType(SummaryType.Avg)
+                .Format(Format.Currency)
+                .CalculateSummaryValue("calculateColumnTotalsSummaryValue");
         })
     )
+    .OnCellPrepared("onCellPrepared")
 )
+
+<div class="legend">
+    <span class="legend-title">Legend:</span>
+    <span class="pill pill-grand-row">Grand Total Row</span>
+    <span class="pill pill-grand-col">Grand Total Column</span>
+    <span class="pill pill-both">Grand Total Row ∩ Column</span>
+    <span class="pill pill-total-row">Total Row</span>
+    <span class="pill pill-total-col">Total Column</span>
+</div>
+
+<script>
+    function onCellPrepared(e) {
+        if (e.area === "row" && e.cell.type === "GT") {
+            e.cellElement.text("Grand Total (+10%)");
+        }
+
+        if (e.area !== "data") return;
+
+        const rowType = e.cell.rowType;
+        const columnType = e.cell.columnType;
+
+        if (rowType === "GT" && columnType === "GT") {
+            e.cellElement.addClass("cell-both");
+        } else if (rowType === "GT") {
+            e.cellElement.addClass("cell-grand-row");
+        } else if (columnType === "GT") {
+            e.cellElement.addClass("cell-grand-col");
+        } else if (rowType === "T") {
+            e.cellElement.addClass("cell-total-row");
+        } else if (columnType === "T") {
+            e.cellElement.addClass("cell-total-col");
+        }
+    }
+
+    // Detect Grand Total and Total Columns
+    function calculateColumnTotalsSummaryValue(cell) {
+        const columnParent = cell.parent("column");
+
+        const isGrandTotalColumn = !columnParent;
+        const isTotalColumn = columnParent && !columnParent.parent("column");
+
+        if (isGrandTotalColumn || isTotalColumn) {
+            return cell.value();
+        }
+        return null;
+    }
+
+    // Detect Grand Total and Total Rows
+    function calculateRowTotalsSummaryValue(cell) {
+        const rowParent = cell.parent("row");
+
+        const isGrandTotalRow = !rowParent;
+        const isTotalRow = rowParent && !rowParent.parent("row");
+
+        if (isGrandTotalRow) {
+            return (cell.value(true) || 0) * 1.1;
+        }
+
+        if (isTotalRow) {
+            const prevTotalRowCell = cell.prev("row");
+            if (prevTotalRowCell) {
+                return (cell.value(true) || 0) + (prevTotalRowCell.value(true) || 0);
+            }
+        }
+        return cell.value();
+    }
+</script>

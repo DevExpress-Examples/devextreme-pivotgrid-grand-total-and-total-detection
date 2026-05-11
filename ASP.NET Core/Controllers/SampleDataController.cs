@@ -15,7 +15,7 @@ public class SampleDataController: Controller {
 
     [HttpGet]
     public object Get(DataSourceLoadOptions loadOptions) {
-        return DataSourceLoader.Load(SampleData.Orders, loadOptions);
+        return DataSourceLoader.Load(SampleData.Sales, loadOptions);
     }
 
 }
