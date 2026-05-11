@@ -47,7 +47,7 @@ $(() => {
     ],
   });
 
-  $("#pivotGrid").dxPivotGrid({
+  $("#pivotgrid").dxPivotGrid({
     dataSource,
     showBorders: true,
     showColumnTotals: true,

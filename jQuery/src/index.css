@@ -34,37 +34,43 @@
   margin-bottom: 20px;
 }
 
-/* Grand Total row */
-#pivotGrid .cell-grand-row {
+#pivotgrid .cell-grand-row,
+#pivotgrid .cell-grand-col,
+#pivotgrid .cell-both,
+#pivotgrid .cell-total-row,
+#pivotgrid .cell-total-col {
+  font-weight: 600;
+}
+
+/* Grand Totals */
+#pivotgrid .cell-grand-row,
+.pill-grand-row {
   background: #cce0f5;
   color: #1a3a5c;
-  font-weight: 700;
 }
 
-/* Grand Total column */
-#pivotGrid .cell-grand-col {
+#pivotgrid .cell-grand-col,
+.pill-grand-col {
   background: #ddeaf9;
   color: #1a3a5c;
-  font-weight: 700;
 }
 
-/* Grand Total row ∩ column */
-#pivotGrid .cell-both {
+#pivotgrid .cell-both,
+.pill-both {
   background: #b8d4f0;
   color: #0d2440;
   font-weight: 700;
 }
 
-/* Total row */
-#pivotGrid .cell-total-row {
+/* Totals */
+#pivotgrid .cell-total-row,
+.pill-total-row {
   background: #fde8cc;
   color: #7a4000;
-  font-weight: 600;
 }
 
-/* Total column */
-#pivotGrid .cell-total-col {
+#pivotgrid .cell-total-col,
+.pill-total-col {
   background: #fbd4a8;
   color: #7a4000;
-  font-weight: 600;
 }
