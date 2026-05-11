@@ -84,7 +84,7 @@ $(() => {
 function calculateColumnTotalsSummaryValue(cell) {
   const columnParent = cell.parent("column");
 
-  const isGrandTotalColumn = !cell.parent("column");
+  const isGrandTotalColumn = !columnParent;
   const isTotalColumn = columnParent && !columnParent.parent("column");
 
   // Show 'Sales Average' data only for Grand Total and Total Columns
@@ -98,7 +98,7 @@ function calculateColumnTotalsSummaryValue(cell) {
 function calculateRowTotalsSummaryValue(cell) {
   const rowParent = cell.parent("row");
 
-  const isGrandTotalRow = !cell.parent("row");
+  const isGrandTotalRow = !rowParent;
   const isTotalRow = rowParent && !rowParent.parent("row");
 
   // +10% markup for Grand Total Row
@@ -109,8 +109,9 @@ function calculateRowTotalsSummaryValue(cell) {
   // Running total for Total Rows
   if (isTotalRow) {
     const prevTotalRowCell = cell.prev("row");
-    if (prevTotalRowCell)
+    if (prevTotalRowCell) {
       return (cell.value(true) || 0) + (prevTotalRowCell.value(true) || 0);
+    }
   }
   return cell.value();
 }
