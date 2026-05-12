@@ -1,3 +1,30 @@
-<div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+<div class="demo-container">
+  <div class="long-title">
+    <h3>
+      Grand Totals and Totals Detection using
+      <code>calculateSummaryValue</code>
+    </h3>
+  </div>
+
+  <dx-pivot-grid
+    id="pivotgrid"
+    [dataSource]="dataSource"
+    [showBorders]="true"
+    [showColumnTotals]="true"
+    [showRowTotals]="true"
+    [showColumnGrandTotals]="true"
+    [showRowGrandTotals]="true"
+    [allowExpandAll]="true"
+    (onCellPrepared)="onCellPrepared($event)"
+  >
+  </dx-pivot-grid>
+
+  <div class="legend">
+    <span class="legend-title">Legend:</span>
+    <span class="pill pill-grand-row">Grand Total Row</span>
+    <span class="pill pill-grand-col">Grand Total Column</span>
+    <span class="pill pill-both">Grand Total Row ∩ Column</span>
+    <span class="pill pill-total-row">Total Row</span>
+    <span class="pill pill-total-col">Total Column</span>
+  </div>
 </div>
