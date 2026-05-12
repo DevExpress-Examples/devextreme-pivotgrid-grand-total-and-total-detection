@@ -10,12 +10,23 @@
     <link rel="stylesheet" type="text/css" href="index.css" />
     <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../node_modules/devextreme-dist/js/dx.all.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="module" src="index.js"></script>
   </head>
 
   <body class="dx-viewport">
     <div class="demo-container">
-      <div id="btn"></div>
+      <div class="long-title">
+        <h3>Grand Totals and Totals Detection using <code>calculateSummaryValue</code></h3>
+      </div>
+      <div id="pivotgrid"></div>
+      <div class="legend">
+        <span class="legend-title">Legend:</span>
+        <span class="pill pill-grand-row">Grand Total Row</span>
+        <span class="pill pill-grand-col">Grand Total Column</span>
+        <span class="pill pill-both">Grand Total Row ∩ Column</span>
+        <span class="pill pill-total-row">Total Row</span>
+        <span class="pill pill-total-col">Total Column</span>
+      </div>
     </div>
   </body>
 </html>
