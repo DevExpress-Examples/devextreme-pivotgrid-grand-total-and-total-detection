@@ -119,8 +119,7 @@ function App(): JSX.Element {
     <div className='demo-container'>
       <div className='long-title'>
         <h3>
-          Grand Totals and Totals Detection using{' '}
-          <code>calculateSummaryValue</code>
+          Grand Totals and Totals Detection using <code>calculateSummaryValue</code>
         </h3>
       </div>
 
