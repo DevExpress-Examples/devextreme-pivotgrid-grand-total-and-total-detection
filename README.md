@@ -54,6 +54,8 @@ calculateSummaryValue(cell) {
 }
 ```
 
+Detection is based on hierarchy depth. Each call to `parent()` moves one level up in the row or column hierarchy. A Grand Total cell has no parent (depth 0), while a Total cell has a parent but that parent has no parent of its own (depth 1). Regular cells are at depth 2 or deeper.
+
 ## Files to Review
 
 - **Angular**
