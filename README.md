@@ -8,7 +8,7 @@
 
 This is the repository template for creating new examples. 
 
-![Example image](images/image-template.png)
+![DevExtreme PivotGrid - Grand Totals and Totals Detection](images/grand-totals-and-totals-detection.png)
 
 Use **DevExtreme _Product_ - _Task_** template for a title. 
 
