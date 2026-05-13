@@ -1,4 +1,76 @@
-.default-style {
+.demo-container {
   margin: 50px;
   width: 90vw;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-title {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.pill {
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.long-title h3 {
+  font-family:
+    "Segoe UI Light", "Helvetica Neue Light", "Segoe UI", "Helvetica Neue",
+    "Trebuchet MS", Verdana;
+  font-weight: 200;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+::ng-deep #pivotgrid .cell-grand-row,
+::ng-deep #pivotgrid .cell-grand-col,
+::ng-deep #pivotgrid .cell-both,
+::ng-deep #pivotgrid .cell-total-row,
+::ng-deep #pivotgrid .cell-total-col {
+  font-weight: 600;
+}
+
+/* Grand Totals */
+::ng-deep #pivotgrid .cell-grand-row,
+.pill-grand-row {
+  background: #cce0f5;
+  color: #1a3a5c;
+}
+
+::ng-deep #pivotgrid .cell-grand-col,
+.pill-grand-col {
+  background: #ddeaf9;
+  color: #1a3a5c;
+}
+
+::ng-deep #pivotgrid .cell-both,
+.pill-both {
+  background: #b8d4f0;
+  color: #0d2440;
+  font-weight: 700;
+}
+
+/* Totals */
+::ng-deep #pivotgrid .cell-total-row,
+.pill-total-row {
+  background: #fde8cc;
+  color: #7a4000;
+}
+
+::ng-deep #pivotgrid .cell-total-col,
+.pill-total-col {
+  background: #fbd4a8;
+  color: #7a4000;
 }
