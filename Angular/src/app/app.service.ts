@@ -270,7 +270,7 @@ const salesData: SaleData[] = [
 
 @Injectable()
 export class Service {
-  getSales(): SaleData[] {
+  getSales() {
     return salesData;
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { DxPivotGridModule, DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
-import PivotGridDataSource, { dxPivotGridSummaryCell } from 'devextreme/ui/pivot_grid/data_source';
-import { SaleData, Service } from './app.service';
+import { DxPivotGridModule, type DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
+import PivotGridDataSource, { type dxPivotGridSummaryCell } from 'devextreme/ui/pivot_grid/data_source';
+import { Service } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +11,11 @@ import { SaleData, Service } from './app.service';
   imports: [DxPivotGridModule],
 })
 export class AppComponent {
-  salesData: SaleData[];
-
   dataSource: PivotGridDataSource;
 
   constructor(service: Service) {
-    this.salesData = service.getSales();
-
     this.dataSource = new PivotGridDataSource({
-      store: this.salesData,
+      store: service.getSales(),
       fields: [
         {
           dataField: 'region',
