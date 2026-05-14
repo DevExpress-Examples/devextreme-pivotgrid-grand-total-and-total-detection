@@ -4,15 +4,15 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# DevExtreme PivotGrid - How to Detect Grand Total and Total Rows and Columns using calculateSummaryValue
+# DevExtreme PivotGrid - Detect Grand Total and Total Rows and Columns using calculateSummaryValue
 
-This example demonstrates how to use the [calculateSummaryValue](https://js.devexpress.com/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#calculateSummaryValue) function to detect Grand Total and Total rows and columns in the DevExtreme [PivotGrid](https://js.devexpress.com/Documentation/Guide/UI_Components/PivotGrid/Overview/) and apply custom aggregation logic to each cell type.
+This example uses the [calculateSummaryValue](https://js.devexpress.com/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#calculateSummaryValue) function to detect Grand Total and Total rows and columns in the DevExtreme [PivotGrid](https://js.devexpress.com/Documentation/Guide/UI_Components/PivotGrid/Overview/) and apply custom aggregation logic to each cell type.
 
 ![DevExtreme PivotGrid - Grand Totals and Totals Detection](images/grand-totals-and-totals-detection.png)
 
 ## Implementation Details 
 
-The `calculateSummaryValue` function receives a [Summary Cell](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxPivotGrid/Summary_Cell/) object that exposes traversal methods (e.g., `parent()`, `children()`, `prev()`) for navigating the pivot cell hierarchy. Use these methods to determine the cell type.
+The [calculateSummaryValue](https://js.devexpress.com/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#calculateSummaryValue) function receives a [Summary Cell](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxPivotGrid/Summary_Cell/) object that exposes traversal methods (for example, `parent()`, `children()`, `prev()`) for navigating the pivot cell hierarchy. Use these methods to determine the cell type.
 
 The following code detects Grand Total and Total columns:
 
