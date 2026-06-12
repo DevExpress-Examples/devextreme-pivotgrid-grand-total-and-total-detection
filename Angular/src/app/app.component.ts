@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DxPivotGridModule, type DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import PivotGridDataSource, { type dxPivotGridSummaryCell } from 'devextreme/ui/pivot_grid/data_source';
 import { Service } from './app.service';
@@ -8,6 +8,7 @@ import { Service } from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [Service],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [DxPivotGridModule],
 })
 export class AppComponent {
